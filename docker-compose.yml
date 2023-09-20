@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  backend:
+    container_name: "fastAPI_bkV2"
+    restart: always
+
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    networks:
+      - custom
+
+networks:
+  custom:
+    driver: bridge
+
