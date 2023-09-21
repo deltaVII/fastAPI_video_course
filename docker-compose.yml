@@ -9,6 +9,22 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8000:8000
+    depends_on:
+      - database
+    networks:
+      - custom
+
+  database:
+    container_name: "postgres_dbV2"
+    image: postgres:15.4-alpine
+    restart: always
+
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=tapwd
+      - POSTGRES_DB=test_db
     networks:
       - custom
 
